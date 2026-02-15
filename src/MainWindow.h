@@ -9,7 +9,7 @@
 #include <QPushButton>
 #include <QLabel>
 
-#include "Counter.h"
+#include "AudioPlayer/AudioPlayer.h"
 
 class MainWindow : public QMainWindow{
     Q_OBJECT
@@ -17,13 +17,13 @@ public:
     explicit MainWindow(QWidget *parent = nullptr);
 
 private slots:
-    void onCounterChanged(const int&) const;
+    void onAudioPlayerStateChanged(const QMediaPlayer::PlaybackState &state) const;
 
 private:
-    std::unique_ptr<Counter> m_counter;
-    QPushButton *m_button = nullptr;
-    QLabel *m_label = nullptr;
+    AudioPlayer m_audio_player;
+    QPushButton                 *m_start_button = nullptr;
+    QPushButton                 *m_stop_button  = nullptr;
+    QLabel                      *m_label        = nullptr;
 };
-
 
 #endif //AUDIOPLAYER_MAINWINDOW_H

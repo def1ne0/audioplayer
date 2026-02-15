@@ -12,18 +12,20 @@ find_package(Qt6 COMPONENTS
         Core
         Gui
         Widgets
+        Multimedia
         REQUIRED)
 
 add_executable(audioplayer
         main.cpp
-        src/Counter.h
-        src/Counter.cpp
         src/MainWindow.cpp
         src/MainWindow.h
+        src/AudioPlayer/AudioPlayer.cpp
+        src/AudioPlayer/AudioPlayer.h
 )
 target_link_libraries(audioplayer
-        Qt::Core
-        Qt::Gui
-        Qt::Widgets
+        Qt6::Core
+        Qt6::Gui
+        Qt6::Widgets
+        Qt6::Multimedia
 )
 
