@@ -21,9 +21,9 @@ add_executable(audioplayer
         main.cpp
         src/AudioPlayer/AudioPlayer.cpp
         include/AudioPlayer.h
-        src/forms/MainWindow.cpp
+        src/MainWindow/MainWindow.cpp
         include/MainWindow.h
-        src/forms/MainWindow.ui
+        src/MainWindow/MainWindow.ui
         include/MainWindow.h
 )
 target_link_libraries(audioplayer
