@@ -15,12 +15,16 @@ find_package(Qt6 COMPONENTS
         Multimedia
         REQUIRED)
 
+include_directories(include)
+
 add_executable(audioplayer
         main.cpp
-        src/MainWindow.cpp
-        src/MainWindow.h
         src/AudioPlayer/AudioPlayer.cpp
-        src/AudioPlayer/AudioPlayer.h
+        include/AudioPlayer.h
+        src/forms/MainWindow.cpp
+        include/MainWindow.h
+        src/forms/MainWindow.ui
+        include/MainWindow.h
 )
 target_link_libraries(audioplayer
         Qt6::Core

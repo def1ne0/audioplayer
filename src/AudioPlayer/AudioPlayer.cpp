@@ -2,36 +2,37 @@
 // Created by define on 15.02.2026.
 //
 
-#include "AudioPlayer.h"
+#include "../../include/AudioPlayer.h"
 #include <QMediaPlayer>
 #include <QAudioOutput>
+#include <utility>
 
-AudioPlayer::AudioPlayer(const QUrl &url)
-    : m_player(new QMediaPlayer),
-      m_output(new QAudioOutput),
-      m_url(url) {
+AudioPlayer::AudioPlayer(QUrl url)
+    : _player(new QMediaPlayer),
+      _output(new QAudioOutput),
+      _url(std::move(url)) {
 
-    m_player->setAudioOutput(m_output);
-    m_player->setSource(m_url);
+    _player->setAudioOutput(_output);
+    _player->setSource(_url);
 }
 
 void AudioPlayer::loadFromAssets(const QUrl &url) {
-    m_url = url;
+    _url = url;
 }
 
 void AudioPlayer::start() {
-    m_player->setSource(m_url);
-    m_player->play();
+    _player->setSource(_url);
+    _player->play();
 
     emit stateChanged(QMediaPlayer::PlaybackState::PlayingState);
 }
 
 void AudioPlayer::stop() {
-    m_player->stop();
+    _player->stop();
 
     emit stateChanged(QMediaPlayer::PlaybackState::StoppedState);
 }
 
 QMediaPlayer::PlaybackState AudioPlayer::getState() const {
-    return m_player->playbackState();
+    return _player->playbackState();
 }
